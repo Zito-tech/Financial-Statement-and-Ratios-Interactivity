@@ -394,7 +394,7 @@ def run_year(opening_balance, data):
 
 data = BASE_DATA.copy()
 
-opening_balance = 0
+opening_balance = data["bank"]
 
 opening_balance, data = run_year(
     opening_balance,
