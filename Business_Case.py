@@ -82,6 +82,7 @@ def run_year(opening_balance, data):
     if s1:
         data["rent"] -= 80_000
         data["bank"] += 80_000
+        data["creditors"] += 22_000
         cash_from_operations += 80_000
 
     # 2. Increase marketing
@@ -89,6 +90,7 @@ def run_year(opening_balance, data):
         data["marketing"] += 50_000
         data["sales"] += 500_000
         data["bank"] += 450_000
+        data["creditors"] += 121_500
         cash_from_operations += 450_000
 
     # 3. Hire 2 employees
@@ -96,18 +98,20 @@ def run_year(opening_balance, data):
         data["salaries"] += 500_000
         data["sales"] += 2_000_000
         data["bank"] += 1_500_000
+        data["creditors"] += 405_000
         cash_from_operations += 1_500_000
 
     # 4. New supplier
     if s4:
         data["cost_of_sales"] -= 500_000
         data["bank"] += 500_000
+        data["creditors"] +=135_000
         cash_from_operations += 500_000
 
     # 5. Buy new computer
     if s5:
         data["fixed_assets"] += 500_000
-        data["bank_overdraft"] += 500_000
+        data["bank"] -= 500_000
         cash_from_investments -= 500_000
 
     # 6. L&D investment
@@ -115,6 +119,7 @@ def run_year(opening_balance, data):
         data["admin_costs"] += 500_000
         data["sales"] += 1_000_000
         data["bank"] += 500_000
+        data["creditors"] += 135_000
         cash_from_operations += 500_000
 
     # 7. Consultant costs
@@ -122,6 +127,7 @@ def run_year(opening_balance, data):
         data["admin_costs"] += 750_000
         data["cost_of_sales"] -= 1_000_000
         data["bank"] += 250_000
+        data["creditors"] += 67_500
         cash_from_operations += 250_000
 
     # --------------------------------
@@ -394,9 +400,10 @@ def run_year(opening_balance, data):
 
 data = BASE_DATA.copy()
 
-opening_balance = data["bank"]
+opening_balance = 0
 
 opening_balance, data = run_year(
     opening_balance,
     data
 )
+
